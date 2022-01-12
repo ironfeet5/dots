@@ -4,13 +4,18 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
+set $term kitty
 set $files thunar
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $background ~/pictures/wallpapers/13.png
-set $lock swaylock --image :$background --effect-blur 5x1 --clock --indicator --font 'Fira Code'
+set $menu wofi 
+set $background ~/pictures/wallpapers/canyon.jpg
+set $lock $HOME/code/scripts/lock.sh 
 set $laptop eDP1
 set $gnome-schema org.gnome.desktop.interface
+
+exec wl-paste -t text --watch clipman store
+bindsym $mod+h exec clipman pick -t wofi
+
+exec mako
 
 #gtk settings
 exec_always {
@@ -24,12 +29,15 @@ exec_always {
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-exec_always /path/to/script.sh
-
 #input config
 input type:touchpad {
 	tap enabled
 	natural_scroll enabled
+	accel_profile adaptive
+	drag enabled
+	pointer_accel 0.2
+	scroll_method two_finger
+	middle_emulation enabled
 }
 
 input type:pointer {
@@ -57,26 +65,30 @@ floating_modifier $mod normal
 bindsym $mod+Return exec $term
 bindsym $mod+w kill
 bindsym $mod+d exec $menu
-bindsym alt+p exec firefox
+bindsym alt+p exec firefox-nightly
 bindsym $mod+e exec $files
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1000
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1000
-bindsym XF86AudioMicMute exec amixer sset Capture toggle
-bindsym XF86AudioMute exec amixer sset Master toggle
-bindsym XF86MonBrightnessDown exec sudo brightlight -d 100
-bindsym XF86MonBrightnessUp exec sudo brightlight -i 100
-bindsym alt+x exec playerctl play-pause
-bindsym alt+z exec playerctl previous
-bindsym alt+c exec playerctl next
+bindsym --locked Print exec bash ~/code/scripts/screen-output.sh 
+bindsym $mod+shift+s exec bash ~/code/scripts/screenshot.sh
+
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1000
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1000
+bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86Tools exec kitty nvim ~/.config/sway/config
+bindsym --locked alt+x exec playerctl play-pause
+bindsym --locked alt+z exec playerctl previous
+bindsym --locked alt+c exec playerctl next
 
 #external keyboard commands
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioNext exec playerctl next
 
-bindsym $mod+l exec $lock
+bindsym $mod+l exec bash $lock
 
-bindsym $mod+alt+r reload
+bindsym $mod+shift+r reload
 
 # Move your focus around
 bindsym $mod+c focus next
