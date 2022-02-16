@@ -6,8 +6,8 @@ set $up k
 set $right l
 set $term kitty
 set $files thunar
-set $menu wofi 
-set $background ~/pictures/wallpapers/canyon.jpg
+set $menu sh ~/code/scripts/bemenu.sh 
+set $background ~/pictures/wallpapers/deserted-trees.jpg
 set $lock $HOME/code/scripts/lock.sh 
 set $laptop eDP1
 set $gnome-schema org.gnome.desktop.interface
@@ -16,11 +16,11 @@ exec wl-paste -t text --watch clipman store
 bindsym $mod+h exec clipman pick -t wofi
 
 exec mako
-
+exec nm-applet --indicator
 #gtk settings
 exec_always {
-	gsettings set $gnome-schema gtk-theme 'gruvbox-gtk'
-	gsettings set $gnome-schema icon-theme 'Gruvbox-Material-Dark'
+	gsettings set $gnome-schema gtk-theme 'Mojave-dark'
+	gsettings set $gnome-schema icon-theme 'McMojave-circle-blue-dark'
 	gsettings set $gnome-schema cursor-theme 'Adwaita'
 	#gsettings set $gnome-schema font-theme 'Gruvbox'
 }
@@ -159,8 +159,6 @@ bindsym $mod+a focus parent
 # Idle configuration
 exec swayidle \
     timeout 300 'exec $lock' \
-    timeout 600 'swaymsg "output * dpms off"' \
-    after-resume 'swaymsg "output * dpms on"' \
     before-sleep 'exec $lock'
 
 mode "resize" {

@@ -9,31 +9,31 @@
 }
 
 window {
-    color:      #c8c8c8;
-    background: rgba(26, 24, 24, 0.9);
+    color:      rgba(235, 219, 178, 1);
+    background: rgba(40, 40, 40, 1);
 }
 
 #custom-powerctrl {
     font-size:  22px;
     padding:    0px 13px 0px 9px;
-    color:      #577644;
-    background: #302b2a;
+    color:      #fe8019;
+    background: #3c3836;
     margin:     0px 4px 0px 0px;
 }
 
 #workspaces {
     margin:     0 6px;
-    color:      #485a98;
+    color:      rgba(60, 255, 255, 1);
 
 }
 
 #workspaces button {
-    padding: 0px 4px 0px 4px;
-    color:	    #c8c8c8;
+    padding: 0px 2px 0px 2px;
+    color:	    rgba(235, 219, 178, 1);
 }
 
 #workspaces button.focused {
-    color:	    #485a98;
+    color:	    #458588;
 }
 
 #bluetooth, #mode, #battery, #workspaces, #cpu, #temperature, #backlight, #tray, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail {
@@ -41,18 +41,18 @@ window {
     min-width:  25px;
     padding:    0px 5px 0px 5px;
     border-radius: 2px;
-    background: #302b2a;
+    background: #3c3836;
 }
 
 #bluetooth {
     color:	#458588;
 }
 #custom-spotify {
-    color:      #fad384;
+    color:      #8ec07c;
 }
 
 #memory {
-    color:      #9c814e;
+    color:      #83a598;
 }
 
 #pulseaudio {
@@ -60,7 +60,7 @@ window {
 }
 
 #backlight {
-    color:      #a6463d;
+    color:      #b8bb26;
 }
 
 #temperature {

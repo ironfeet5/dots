@@ -4,10 +4,14 @@
     "height": 30,
 
     "modules-left": ["sway/workspaces", "custom/spotify", "sway/mode"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "memory", "network", "battery", "battery#bat2"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["bluetooth", "pulseaudio", "backlight", "memory", "battery", "battery#bat2", "tray", "clock"],
     "sway/mode": {
         "format": " {}"
+    },
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50
     },
     "sway/workspaces": {
     	"persistent_workspaces": {
@@ -15,7 +19,7 @@
 		"2":[],
 		"3":[],
 		"4":[],
-		"5":[]
+		"5":[],
 	    },
         "format-icons": {
             "1": "I",
@@ -32,14 +36,41 @@
         "format": "{icon}",
         "disable-scroll": true
     },
+    "bluetooth": {
+       "format": "{icon}",
+  	    "format-alt": "bluetooth: {status}",
+  	    "format-icons": {
+  		    "enabled": "",
+  		    "disabled": ""
+  	},
+  	    "tooltip-format": "{}" 
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{}% ",
+        "max-length": 10
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "on-scroll-up": "light -U 1",
+        "on-scroll-down": "light -A 1",
+        "format": " {percent}%"
+    },
     "clock": {
-        "format": "{:%H:%M}",
-        "tooltip": false
+        "format-alt": "{:%H:%M}",
+        "format": " {: %a %d - %H:%M}",
+        "format-alt-click": "click-right",
+        "tooltip": true,
+        "tooltip-format": "{:%A %B %d, %Y // %H:%M}"
     },
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {icon} ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [" ", " ", " ", " ", " "],
         "format-charging": "{capacity}% ",
         "format-alt-click": "click-right",
         "interval": 30,
@@ -47,34 +78,37 @@
         "bat": "BAT0"
     },
     "battery#bat2": {
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {icon} ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [" ", " ", " ", " ", " "],
         "format-charging": "{capacity}% ",
+        "format-alt-click": "click-right", 
         "interval": 30,
         "tooltip": false,
         "bat": "BAT1"
     },
     "network": {
-        "format": "{essid} {icon}",
+        "format": "{icon} {essid} {signalStrength}%",
         "format-alt": "{icon}",
         "format-alt-click": "click-right",
         "format-icons": {
-            "wifi": [""],
-            "ethernet": [""],
-            "disconnected": ["睊"]
+            "wifi": [" "],
+            "ethernet": [" "],
+            "disconnected": ["睊 "]
         },
-    	"tooltip": false
+    	"tooltip": true,
+        "tooltip-format": "Using:\t\t{ifname}\nIP:\t\t{ipaddr}\nDownload:\t{bandwidthDownBits}\nUpload:\t\t{bandwidthUpBits}"
     },
     "pulseaudio": {
-        "format": "{volume} {icon}",
+        "format": "{icon} {volume}",
         "format-alt": "{volume}",
         "format-alt-click": "click-right",
         "format-muted": "婢",
         "format-icons": {
-            "default": ["", "", ""]
+            "default": ["", "", ""],
+            "headphone": ""
 	    },
-        "scroll-step": 10,
+        "scroll-step": 2,
         "on-click": "pavucontrol",
         "tooltip": false
     },
@@ -85,10 +119,17 @@
         "exec-if": "pgrep spotify",
         "escape": true
     },
+    "custom/powerctrl": {
+    "tooltip": false,
+    "format": "襤",
+    "on-click": "bash $HOME/.config/waybar/scripts/powerctrl.sh" 
+    },
     "memory": {
-    	"interval": 2,
-    	"format": "{used:0.2f}G ",
-    	"max-length": 10
+    	"interval": 5,
+    	"format": "  {used:0.2f}G",
+    	"max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Total:\t\t{total:.2f}G\nUsed:\t\t{used:.2f}G\nAvailable:\t{avail:.2f}G\n% Used:\t\t{percentage}%"
     },
     "custom/weather": {
         "format": "{}",
@@ -98,5 +139,10 @@
         "return-type": "json",
         "exec": "~/.config/waybar/modules/weather.sh",
         "exec-if": "ping wttr.in -c1"
+    },
+    "temperature": {
+        "format": " {temperatureC}°C",
+        "tooltip": false,
+        "hwmon-path": "/sys/class/hwmon/hwmon10/temp2_input"
     }
 }
