@@ -11,6 +11,6 @@ editor: neovim </br>
 </br>
 
 ### pics
-![Alt text](./pics/workflow.png.png?raw=true)
+![Alt text](./pics/workflow.png?raw=true)
 
 ![Alt text](./pics/neat.png?raw=true)
