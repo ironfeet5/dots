@@ -1,148 +1,126 @@
 {
-    "layer": "bottom",
-    "position": "top",
-    "height": 30,
+  "layer": "bottom",
+  "position": "top",
+  "height": 30,
 
-    "modules-left": ["sway/workspaces", "custom/spotify", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["bluetooth", "pulseaudio", "backlight", "memory", "battery", "battery#bat2", "tray", "clock"],
-    "sway/mode": {
-        "format": " {}"
+  "modules-left": ["sway/workspaces", "custom/spotify", "sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["pulseaudio", "backlight", "memory", "battery", "battery#bat2", "tray", "clock"],
+  "sway/mode": {
+    "format": " {}"
+  },
+  "sway/window": {
+    "format": "{}",
+    "max-length": 50,
+    "icon": false
     },
-    "sway/window": {
-        "format": "{}",
-        "max-length": 50
-    },
-    "sway/workspaces": {
-    	"persistent_workspaces": {
-		"1":[],
-		"2":[],
-		"3":[],
-		"4":[],
-		"5":[],
+  "sway/workspaces": {
+    "persistent_workspaces": {
+		  "1":[],
+		  "2":[],
+		  "3":[],
+		  "4":[],
+		  "5":[],
 	    },
-        "format-icons": {
-            "1": "I",
-            "2": "II",
-            "3": "III",
-            "4": "IV",
-            "5": "V",
-            "6": "VI",
-            "7": "VII",
-            "8": "VIII",
-            "9": "IX",
-            "10": "X"
-        },
-        "format": "{icon}",
-        "disable-scroll": true
+      "format-icons": {
+        "1": "I",
+        "2": "II",
+        "3": "III",
+        "4": "IV",
+        "5": "V",
+        "6": "VI",
+        "7": "VII",
+        "8": "VIII",
+        "9": "IX",
+        "10": "X"
+      },
+      "format": "{icon}",
+      "disable-scroll": true
     },
     "bluetooth": {
-       "format": "{icon}",
-  	    "format-alt": "bluetooth: {status}",
-  	    "format-icons": {
-  		    "enabled": "",
-  		    "disabled": ""
-  	},
-  	    "tooltip-format": "{}" 
+      "format": "{icon}",
+  	  "format-alt": "bluetooth: {status}",
+      "format-alt-click": "click-right",
+  	  "format-icons": {
+  		  "enabled": "",
+  		  "disabled": ""
+  	  },
+  	  "tooltip-format": "{}"
     },
     "tray": {
-        "icon-size": 18,
-        "spacing": 10
-    },
-    "cpu": {
-        "interval": 10,
-        "format": "{}% ",
-        "max-length": 10
+      "icon-size": 18,
+      "spacing": 10
     },
     "backlight": {
-        "device": "intel_backlight",
-        "on-scroll-up": "light -U 1",
-        "on-scroll-down": "light -A 1",
-        "format": " {percent}%"
+      "device": "intel_backlight",
+      "on-scroll-up": "light -U 1",
+      "on-scroll-down": "light -A 1",
+      "format": " {percent}%"
     },
     "clock": {
-        "format-alt": "{:%H:%M}",
-        "format": " {: %a %d - %H:%M}",
-        "format-alt-click": "click-right",
-        "tooltip": true,
-        "tooltip-format": "{:%A %B %d, %Y // %H:%M}"
+      "format-alt": "{:%H:%M}",
+      "format": " {: %a %d - %H:%M}",
+      "format-alt-click": "click-right",
+      "tooltip": true,
+      "tooltip-format": "{:%A %B %d, %Y // %H:%M}"
     },
     "battery": {
-        "format": "{capacity}% {icon} ",
-        "format-alt": "{time} {icon}",
-        "format-icons": [" ", " ", " ", " ", " "],
-        "format-charging": "{capacity}% ",
-        "format-alt-click": "click-right",
-        "interval": 30,
-        "tooltip": false,
-        "bat": "BAT0"
+      "format": "{capacity}% {icon} ",
+      "format-alt": "{time} {icon}",
+      "format-icons": [" ", " ", " ", " ", " "],
+      "format-charging": "{capacity}% ",
+      "format-alt-click": "click-right",
+      "interval": 30,
+      "tooltip": false,
+      "bat": "BAT0"
     },
     "battery#bat2": {
-        "format": "{capacity}% {icon} ",
-        "format-alt": "{time} {icon}",
-        "format-icons": [" ", " ", " ", " ", " "],
-        "format-charging": "{capacity}% ",
-        "format-alt-click": "click-right", 
-        "interval": 30,
-        "tooltip": false,
-        "bat": "BAT1"
+      "format": "{capacity}% {icon} ",
+      "format-alt": "{time} {icon}",
+      "format-icons": [" ", " ", " ", " ", " "],
+      "format-charging": "{capacity}% ",
+      "format-alt-click": "click-right",
+      "interval": 30,
+      "tooltip": false,
+      "bat": "BAT1"
     },
     "network": {
-        "format": "{icon} {essid} {signalStrength}%",
-        "format-alt": "{icon}",
-        "format-alt-click": "click-right",
-        "format-icons": {
-            "wifi": [" "],
-            "ethernet": [" "],
-            "disconnected": ["睊 "]
-        },
+      "format": "{icon} {essid} {signalStrength}%",
+      "format-alt": "{icon}",
+      "format-alt-click": "click-right",
+      "format-icons": {
+        "wifi": [" "],
+        "ethernet": [" "],
+        "disconnected": ["睊 "]
+      },
     	"tooltip": true,
-        "tooltip-format": "Using:\t\t{ifname}\nIP:\t\t{ipaddr}\nDownload:\t{bandwidthDownBits}\nUpload:\t\t{bandwidthUpBits}"
+      "tooltip-format": "Using:\t\t{ifname}\nIP:\t\t{ipaddr}\nDownload:\t{bandwidthDownBits}\nUpload:\t\t{bandwidthUpBits}"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}",
-        "format-alt": "{volume}",
-        "format-alt-click": "click-right",
-        "format-muted": "婢",
-        "format-icons": {
-            "default": ["", "", ""],
-            "headphone": ""
+      "format": "{icon} {volume}",
+      "format-alt": "{volume}",
+      "format-alt-click": "click-right",
+      "format-muted": "婢",
+      "format-icons": {
+        "default": ["", "", ""],
+        "headphone": ""
 	    },
-        "scroll-step": 2,
-        "on-click": "pavucontrol",
-        "tooltip": false
+      "scroll-step": 2,
+      "on-click": "pavucontrol",
+      "tooltip": false
     },
     "custom/spotify": {
-        "interval": 1,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/spotify.sh",
-        "exec-if": "pgrep spotify",
-        "escape": true
-    },
-    "custom/powerctrl": {
-    "tooltip": false,
-    "format": "襤",
-    "on-click": "bash $HOME/.config/waybar/scripts/powerctrl.sh" 
+      "interval": 1,
+      "return-type": "json",
+      "exec": "~/.config/waybar/spotify.sh",
+      "exec-if": "pgrep spotify",
+      "escape": true
     },
     "memory": {
-    	"interval": 5,
+      "interval": 5,
     	"format": "  {used:0.2f}G",
     	"max-length": 10,
-        "tooltip": true,
-        "tooltip-format": "Total:\t\t{total:.2f}G\nUsed:\t\t{used:.2f}G\nAvailable:\t{avail:.2f}G\n% Used:\t\t{percentage}%"
-    },
-    "custom/weather": {
-        "format": "{}",
-        "format-alt": "{alt}: {}",
-        "format-alt-click": "click-right",
-        "interval": 1800,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/weather.sh",
-        "exec-if": "ping wttr.in -c1"
-    },
-    "temperature": {
-        "format": " {temperatureC}°C",
-        "tooltip": false,
-        "hwmon-path": "/sys/class/hwmon/hwmon10/temp2_input"
+      "tooltip": true,
+      "tooltip-format": "Total:\t\t{total:.2f}G\nUsed:\t\t{used:.2f}G\nAvailable:\t{avail:.2f}G\n% Used:\t\t{percentage}%"
     }
 }

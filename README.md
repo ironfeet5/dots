@@ -1,18 +1,16 @@
 # 🌿 arch dotfiles
 
- ### info
- wm: bspwm </br>
- bar: polybar </br>
- pdf: zathura </br>
- term: alacritty </br>
- theme: gruv </br>
- editor: nvim/vscode </br>
- 
- </br>
+### info
+wm: sway </br>
+bar: waybar </br>
+pdf: zathura </br>
+term: kitty </br>
+theme: kanagawa </br>
+editor: neovim </br>
+
+</br>
 
 ### pics
-![Alt text](./pics/fetch.png?raw=true)
+![Alt text](./pics/workflow.png.png?raw=true)
 
-![Alt text](./pics/tiled.png?raw=true)
-
-![Alt text](./pics/floating.png?raw=true)
+![Alt text](./pics/neat.png?raw=true)

@@ -1,10 +1,10 @@
 #vim: syntax=config
-font="FiraCode Nerd Font" 9
+font="Fira Code" 9
 
 # Colors
-background-color=#282828
+background-color=#16161d
 progress-color=source #81a1c1
-text-color=#FBF1C7
+text-color=#dcd7ba
 
 padding=10
 margin=5
@@ -17,7 +17,7 @@ max-icon-size=64
 # Border
 border-size=2
 border-radius=5
-border-color=#A89984
+border-color=#6a9589
 
 # Layer
 layer=top
