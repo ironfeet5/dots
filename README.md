@@ -8,8 +8,6 @@ term: kitty </br>
 theme: kanagawa </br>
 editor: neovim </br>
 
-</br>
-
 ### pics
 ![Alt text](./pics/workflow.png?raw=true)
 
