@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export MOZ_USE_XINPUT2=1
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_WEBRENDER=1
+export LIBVA_DRIVER_NAME=iHD
+export VDPAU_DRIVER=va_gl
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+exec /usr/bin/sway
