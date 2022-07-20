@@ -7,13 +7,13 @@ local core_modules = {
   'configs/impatient',
   'configs/treesitter',
   'configs/alpha-nvim',
+  'configs/servers',
   'configs/neoscroll',
   'configs/nvim-comment',
   'configs/completion',
   'configs/nvim-tree',
   'configs/toggleterm',
   'configs/lualine',
-  'configs/installer',
 }
 
 for _, module in ipairs(core_modules) do

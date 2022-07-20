@@ -49,6 +49,7 @@ return packer.startup(function(use)
   use 'goolord/alpha-nvim'
   use 'terrortylor/nvim-comment'
   use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'L3MON4D3/LuaSnip'
@@ -56,6 +57,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'akinsho/toggleterm.nvim'
   use 'nvim-lualine/lualine.nvim'
+  use 'williamboman/nvim-lsp-installer'
   use 'neovim/nvim-lspconfig'
 
   if PACKER_BOOTSTRAP then
