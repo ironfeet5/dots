@@ -1,24 +1,39 @@
-require("nvim-lsp-installer").setup({
-    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
+require("mason").setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
     }
+  }
 })
 
-require('lspconfig').bashls.setup{}
-require('lspconfig').clangd.setup{}
-require('lspconfig').cmake.setup{}
-require('lspconfig').cssls.setup{}
-require('lspconfig').dockerls.setup{}
-require('lspconfig').html.setup{}
-require('lspconfig').jsonls.setup{}
-require('lspconfig').tsserver.setup{}
-require('lspconfig').pyright.setup{}
-require('lspconfig').rust_analyzer.setup{}
-require('lspconfig').svelte.setup{}
-require('lspconfig').sumneko_lua.setup{}
-require('lspconfig').tailwindcss.setup{}
+require('mason-lspconfig').setup({
+  automatic_installation = true,
+})
+
+local lspconfig = require 'lspconfig'
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local servers = {
+  'bashls',
+  'clangd',
+  'cmake',
+  'cssls',
+  'dockerls',
+  'html',
+  'jsonls',
+  'tsserver',
+  'pyright',
+  'rust_analyzer',
+  'svelte',
+  'sumneko_lua',
+  'tailwindcss'
+}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    capabilities = capabilities,
+  }
+end

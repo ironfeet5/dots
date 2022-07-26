@@ -1,7 +1,5 @@
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", {})
@@ -16,6 +14,8 @@ keymap("n", "<A-h>", "<C-w>h", {})
 keymap("n", "<A-j>", "<C-w>j", {})
 keymap("n", "<A-k>", "<C-w>k", {})
 keymap("n", "<A-l>", "<C-w>l", {})
+
+keymap ("n", "<A-m>", ":ToggleCmp<cr>", {})
 
 -- resize current buffer by +/- 2
 keymap ("n", "<C-h>", ":vertical resize -2<cr>", {})
@@ -46,27 +46,26 @@ keymap ("n", "<", "<gv", {})
 keymap ("n", ">", ">gv", {})
 
 -- Don't accidently create macros when trying to quit
-keymap('n', 'Q', 'q', {})
-keymap('n', 'q', '<nop>', {})
-
--- GitSings keymaps
-keymap('n', "<leader>h", ":Gitsigns preview_hunk<CR>", {})  -- preview_hunk
-keymap('n', "<leader>r", ":Gitsigns reset_buffer<CR>", {})  -- reset_buffer
+keymap ('n', 'Q', 'q', {})
+keymap ('n', 'q', '<nop>', {})
 
 -- Toggle Alpha Dashboard
-keymap('n', "<leader>a", ":set laststatus=3<CR> | :Alpha<CR>", {})
+keymap ('n', "<leader>a", ":set laststatus=3<CR> | :Alpha<CR>", {})
 
 -- Toggle NvimTree
-keymap("n", "<leader>n", ":NvimTreeToggle<CR>", {})
+keymap ("n", "<leader>n", ":NvimTreeToggle<CR>", {})
+
+keymap ("n", "<leader>y", '"+y<CR>', {})
+keymap ('n', '<leader>p', '"+p', {})
 
 -- Yank entire line
 keymap ("n", "yie", ":<C-u>%y<CR>", {})
 
 -- Packer Update
-keymap("n", "<leader>u", ":PackerSync<CR>", {})
+keymap ("n", "<leader>u", ":PackerSync<CR>", {})
 
 -- Packer Install
-keymap("n", "<leader>i", ":PackerInstall<CR>", {})
+keymap ("n", "<leader>i", ":PackerInstall<CR>", {})
 
 
 -- Auto Pairs

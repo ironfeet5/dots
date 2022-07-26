@@ -43,7 +43,6 @@ return packer.startup(function(use)
 
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
   use 'karb94/neoscroll.nvim'
   use 'rebelot/kanagawa.nvim'
   use 'goolord/alpha-nvim'
@@ -57,8 +56,10 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'akinsho/toggleterm.nvim'
   use 'nvim-lualine/lualine.nvim'
-  use 'williamboman/nvim-lsp-installer'
+  use ('williamboman/mason.nvim')
+  use ('williamboman/mason-lspconfig.nvim')
   use 'neovim/nvim-lspconfig'
+  use ('nvim-treesitter/nvim-treesitter', {['do'] = function () pcall(vim.cmd, 'TSUpdate') end})
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

@@ -6,12 +6,12 @@ set {
   $up    k
   $right l
 
-  $term     kitty
-  $browser  firefox-nightly
-  $files    thunar
+  $term  footclient
+  $web   firefox-nightly
+  $files thunar
 
-  $menu sh ~/code/scripts/fuzzel.sh
-  $lock sh ~/code/scripts/lock.sh
+  $menu  ~/bin/menu.sh
+  $lock  ~/bin/lock.sh
 
   $background ~/pictures/wallpapers/apartments.jpg
 }
@@ -19,19 +19,19 @@ set {
 exec {
   mako
   nm-applet --indicator
-  mullvad-vpn --enable-features=UseOzonePlatform --ozone-platform=wayland
-  swayidle -w timeout 600 'exec $lock' before-sleep 'exec $lock'
+  mullvad-vpn
+  swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'exec $lock'
 }
 
 exec_always {
   xrandr --output XWAYLAND0 --primary
   ~/.config/waybar/waybar.sh
+  foot --server
 }
 
 output {
   eDP-1 {
     mode 1920x1080@60Hz pos 0,0
-    adaptive_sync on
     scale 1.0
     scale_filter smart
     transform normal
@@ -54,6 +54,8 @@ input {
 	  pointer_accel 0.2
 	  scroll_method two_finger
 	  middle_emulation enabled
+    dwt on
+    events disabled_on_external_mouse
   }
   type:pointer {
 	  accel_profile flat
@@ -69,7 +71,7 @@ input {
 smart_gaps off
 gaps {
   inner 5
-  outer 2
+  outer 0
 }
 
 #font
@@ -89,13 +91,18 @@ for_window {
   }
   [title="Network Connections"] {
     floating enable,
-    resize set width 40 ppt height 50ppt,
+    resize set width 40 ppt height 50 ppt,
     move absolute position center;
   }
-
+  [title="File Upload"] {
+    floating enable,
+    resize set width 50 ppt height 60 ppt
+    move absolue position center;
+  }
+  [title="RuneLite Launcher"] floating enable
   [shell=".*"] inhibit_idle fullscreen
   [class="^Steam$" title="Friends"] floating enable
-  [class="^Steam$" title="Steam - News"] floating enable
+  [class="^Steam$" title="Steam - News"] floating enable, resize set width 40 ppt height 50ppt
   [class="^Steam$" title="^Settings$"] floating enable
   [class="^Steam$" title=".* - event started"] floating enable
   [class="^Steam$" title=".* CD key"] floating enable
@@ -117,11 +124,6 @@ for_window {
 
 bindsym --to-code {
   $mod+shift+r reload
-
-  $mod+$left  focus left
-  $mod+$down  focus down
-  $mod+$up    focus up
-  $mod+$right focus right
 
   $mod+Left   focus left
   $mod+Down   focus down
@@ -161,7 +163,7 @@ bindsym --to-code {
 
   $mod+Return exec $term
   $mod+d exec $menu
-  alt+p exec $browser
+  alt+p exec $web
   $mod+e exec $files
 
   $mod+1 workspace number 1
@@ -186,10 +188,10 @@ bindsym --to-code {
   $mod+Shift+9 move container to workspace number 9
   $mod+Shift+0 move container to workspace number 10
 
-  Print exec sh ~/code/scripts/screen-output.sh
-  $mod+shift+s exec sh ~/code/scripts/screenshot.sh
+  Print exec sh ~/bin/screen-output.sh
+  $mod+shift+s exec sh ~/bin/screenshot.sh
 
-  $mod+p exec $lock
+  $mod+l exec $lock
 
   $mod+r mode "resize"
 }
@@ -206,6 +208,10 @@ bindsym --locked {
   $mod+x exec playerctl play-pause
   $mod+z exec playerctl previous
   $mod+c exec playerctl next
+
+  XF86AudioPlay exec playerctl play-pause
+  XF86AudioPrev exec playerctl previous
+  XF86AudioNext exec playerctl next
 }
 
 mode "resize" {
@@ -222,6 +228,7 @@ mode "resize" {
 
     Return  mode "default"
     Escape  mode "default"
+    $mod+r  mode "default"
   }
 }
 

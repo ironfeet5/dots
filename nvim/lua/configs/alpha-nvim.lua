@@ -62,5 +62,4 @@ dashboard.section.header.val = {
    [[ `''                                                                      ``' ]],
  }
 
-
 alpha.setup(dashboard.opts)

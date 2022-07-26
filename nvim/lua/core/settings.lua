@@ -10,15 +10,15 @@ set.smarttab = true
 set.expandtab = true
 set.autoindent = true
 set.incsearch = true
-set.shell = "/bin/zsh"
+set.shell = "/usr/bin/zsh"
 set.shortmess:append "sI"
 set.iskeyword:append("-")
-
+set.mouse = "a"
 set.pumheight = 15
 set.ruler = true
 set.conceallevel = 0
 set.tabstop = 2
-set.number = false
+set.number = true
 set.background = "dark"
 set.virtualedit = "onemore"
 set.ignorecase = true
@@ -27,8 +27,9 @@ set.laststatus = 3
 set.title = true
 set.shiftwidth = 2
 set.cmdheight = 1
-set.numberwidth = 2
+set.numberwidth = 1
 set.termguicolors = true
+set.signcolumn = "yes"
 
 set.hidden = true
 set.timeoutlen = 500

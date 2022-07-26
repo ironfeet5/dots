@@ -1,5 +1,3 @@
-# Created by newuser for 5.8
-
 # ZSH Features
 export HISTFILE=~/.zshhist
 export HISTSIZE=1000000
@@ -12,10 +10,6 @@ setopt INC_APPEND_HISTORY_TIME
 setopt EXTENDED_HISTORY
 
 ZSH_THEME="fox"
-
-plugins=(
-  git
-)
 
 source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit; compinit
@@ -30,15 +24,20 @@ if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 fi
 
 # Env
+export PATH=/home/kleidi/bin:$PATH
 export EDITOR=nvim
 export VISUAL=nvim
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Aliases
 alias ssh='TERM=xterm-256color ssh'
 alias ls='ls --color=auto'
-alias icat='kitty +kitten icat'
 alias trim='paru -Qdtq | paru -Rns -'
-alias sway='QT_QPA_PLATFORMTHEME=qt5ct XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway QT_WAYLAND_DISABLE_WINDOWDECORATION=1 sway'
+alias sway='~/bin/sway-launch.sh'
+
+alias gch='git checkout'
+alias ga='git add -A'
+alias gs='git status'
+alias gc='git commit'
+alias gp='git push'

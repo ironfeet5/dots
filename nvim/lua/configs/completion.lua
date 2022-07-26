@@ -46,6 +46,17 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
+  enabled = function()
+    -- disable completion in comments
+    local context = require 'cmp.config.context'
+    -- keep command mode completion enabled when cursor is in a comment
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture("comment")
+        and not context.in_syntax_group("Comment")
+    end
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -124,3 +135,23 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+local mode = false
+function setAutoCmp()
+  mode = not mode
+  if mode then
+    cmp.setup({
+      completion = {
+        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged }
+      }
+    })
+  else
+    cmp.setup({
+      completion = {
+        autocomplete = false
+      }
+    })
+  end
+end
+
+vim.cmd('command ToggleCmp lua setAutoCmp()')
